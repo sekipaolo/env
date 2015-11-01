@@ -1,4 +1,4 @@
 #!/bin/sh
-apk add zsh mc htop
-ln -s ~/.zshrc env/.zshrc
+apk add git zsh mc htop
+ln -s root/.zshrc env/.zshrc
 zsh
