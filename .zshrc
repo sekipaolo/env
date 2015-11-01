@@ -11,7 +11,6 @@ source "$SOURCE_DIR/aliases.zsh"
 source "$SOURCE_DIR/functions.zsh"
 source "$SOURCE_DIR/history.zsh"
 source "$SOURCE_DIR/zsh_hooks.zsh"
-source "$SOURCE_DIR/zsh_hooks.zsh"
 source "$SOURCE_DIR/docker.zsh"
 
 #eval "$(boot2docker shellinit)"

@@ -61,11 +61,7 @@ if [[ $IS_MAC -eq 1 ]]; then
     alias ll='ls -GFhl' # Same as above, but in long listing format
 fi
 if [[ $IS_LINUX -eq 1 ]]; then
-    alias lh='ls -d .* --color' # show hidden files/directories only
-    alias lsd='ls -aFhlG --color'
-    alias l='ls -al --color'
-    alias ls='ls -GFh --color' # Colorize output, add file type indicator, and put sizes in human readable format
-    alias ll='ls -GFhl --color' # Same as above, but in long listing format
+    alias ll='ls -alh --color' # Same as above, but in long listing format
 fi
 
 alias lsd="ls -ld *" # show directories
