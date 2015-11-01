@@ -1,7 +1,31 @@
-alias kill_first="kill -9 $(ps aux | grep irb | awk '{print $2}' | head -1)"
+alias ll='ls -al'
 alias app="bundle exec app"
 
+mkcd() {
+  mkdir $1
+  cd $1
+}
 
+# directory shortcuts
+function c() {
+  case "$1" in
+    api)
+      cd ~/projects/viacom/api
+      ;;
+    haproxy)
+      cd ~/projects/viacom/docker-images/haproxy
+      ;;
+    images)
+      cd ~/projects/viacom/docker-images
+      ;;
+    host)
+      cd ~/projects/viacom/docker-host
+      ;;
+    env)
+      cd ~/env
+      ;;
+  esac
+}
 
 
 # -------------------------------------------------------------------
@@ -17,10 +41,6 @@ alias sudo='nocorrect sudo'
 # -------------------------------------------------------------------
 alias ri='ri -Tf ansi' # Search Ruby documentation
 alias rake="noglob rake" # necessary to make rake work inside of zsh
-#alias be='bundle exec'
-#alias bx='bundle exec'
-#alias gentags='ctags .'
-
 # -------------------------------------------------------------------
 # directory movement
 # -------------------------------------------------------------------
@@ -29,10 +49,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias 'bk=cd $OLDPWD'
-
-# directory shortcuts
-alias projects='~/Projects/'
-alias github='~/Projects/github/'
 
 # -------------------------------------------------------------------
 # directory information
@@ -116,8 +132,8 @@ alias 'wf=ssh markn@markn.webfactional.com'
 # ------------------------------------------------------------------
 alias takeover="tmux detach -a"
 alias attach="tmux attach -t base || tmux new -s base"
-alias ta='tmux attach -t' 
-alias tn='tmux new -s' 
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
 alias tls='tmux ls'
 alias tk='tmux kill-session -t'
 

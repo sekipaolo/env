@@ -1,6 +1,5 @@
 eval "$(rbenv init -)"
 export PATH=$PATH:~/bin
-alias ll='ls -al'
 SOURCE_DIR=~/env/zsh/
 source "$SOURCE_DIR/checks.zsh"
 source "$SOURCE_DIR/colors.zsh"
@@ -17,4 +16,4 @@ source "$SOURCE_DIR/docker.zsh"
 
 #eval "$(boot2docker shellinit)"
 
-. ~/env/z/z.sh
+#. ~/env/z/z.sh

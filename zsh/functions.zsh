@@ -1,59 +1,8 @@
-# -------------------------------------------------------------------
-# Chef functions
-# -------------------------------------------------------------------
-function knhost() {
-  sed -e 's/.*://' -e 's/.*items found//'
-}
+alias ll="ls -alh"
 
-function knifeaws() {
-  knife search node "tags:${@} OR name:${@} OR roles:${@}" -a cloud.public_hostname | knhost
-}
-
-function knifeome() {
-  knife search node "tags:${@} OR name:${@} OR roles:${@}" -a hostname | sort | knhost
-}
-
-function knaws() {
-  for i in "$@"; do
-    for j in `knifeaws "$i"`; do
-      ssh $j
-    done
-  done
-}
-
-function knome() {
-  `tmux new-window -n "$@"`
-  for i in "$@"; do
-    for j in `knifeome "$i"`; do
-      tmux-ministart "$j"
-    done
-  done
-  `tmux kill-pane -t 1`
-  `tmux select-layout even-vertical >/dev/null 2>&1`
-  `tmux set-window-option synchronize-panes`
-}
-
-function kick() { knife ssh "name:$1*" "sudo /etc/init.d/chef-client restart" }
-
-# -------------------------------------------------------------------
-# Git function
-# -------------------------------------------------------------------
-function gg() { git commit -m "$*" }
-
-# -------------------------------------------------------------------
-# Dash functions
-# -------------------------------------------------------------------
-# Open argument in Dash
-function dash() {
-  open "dash://$*"
-}
-
-function dman() {
-  open "dash://manpages:$*"
-}
-
-function dchef() {
-  open "dash://chef:$*"
+# sorted du
+duf() {
+   sudo du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size} ${unit} ${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
 # -------------------------------------------------------------------
@@ -94,33 +43,6 @@ function find-exec() {
   find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
 }
 
-# -------------------------------------------------------------------
-# Count code lines in some directory.
-# $ loc py js css
-# # => Lines of code for .py: 3781
-# # => Lines of code for .js: 3354
-# # => Lines of code for .css: 2970
-# # => Total lines of code: 10105
-# from https://github.com/paulmillr/dotfiles
-# -------------------------------------------------------------------
-function loc() {
-  local total
-  local firstletter
-  local ext
-  local lines
-  total=0
-  for ext in $@; do
-    firstletter=$(echo $ext | cut -c1-1)
-    if [[ firstletter != "." ]]; then
-      ext=".$ext"
-    fi
-    lines=`find-exec "*$ext" cat | wc -l`
-    lines=${lines// /}
-    total=$(($total + $lines))
-    echo "Lines of code for ${fg[blue]}$ext${reset_color}: ${fg[green]}$lines${reset_color}"
-  done
-  echo "${fg[blue]}Total${reset_color} lines of code: ${fg[green]}$total${reset_color}"
-}
 
 # -------------------------------------------------------------------
 # Show how much RAM application uses.
