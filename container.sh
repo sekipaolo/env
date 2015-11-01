@@ -1,4 +1,3 @@
 #!/bin/sh
 apk add git zsh mc htop
-ln -s root/.zshrc env/.zshrc
-zsh
+ln -s root/.zshrc /root/env/.zshrc
