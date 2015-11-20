@@ -1,4 +1,7 @@
-alias docker='docker -H=tcp://192.168.35.2:2375'
+export DOCKER_MACHINE_NAME=default
+export DOCKER_TLS_VERIFY=1
+export DOCKER_CERT_PATH=/Users/sechip/.docker/machine/machines/default
+
 #DOCKER_CERT_PATH=/Users/sechip/.docker/machine/certs/
 #DOCKER_TLS_VERIFY=1
 
