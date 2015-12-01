@@ -1,6 +1,7 @@
 eval "$(rbenv init -)"
 export PATH=$PATH:~/bin
 SOURCE_DIR=~/env/zsh/
+source ~/env/all/mix.sh
 source "$SOURCE_DIR/checks.zsh"
 source "$SOURCE_DIR/colors.zsh"
 source "$SOURCE_DIR/setopt.zsh"

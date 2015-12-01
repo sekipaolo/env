@@ -1,31 +1,7 @@
 alias ll='ls -al'
 alias app="bundle exec app"
 
-mkcd() {
-  mkdir $1
-  cd $1
-}
 
-# directory shortcuts
-function c() {
-  case "$1" in
-    api)
-      cd ~/projects/viacom/api
-      ;;
-    haproxy)
-      cd ~/projects/viacom/docker-images/haproxy
-      ;;
-    images)
-      cd ~/projects/viacom/docker-images
-      ;;
-    host)
-      cd ~/projects/viacom/docker-host
-      ;;
-    env)
-      cd ~/env
-      ;;
-  esac
-}
 
 
 # -------------------------------------------------------------------
